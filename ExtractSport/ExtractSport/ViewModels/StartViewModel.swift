@@ -6,3 +6,53 @@
 //
 
 import Foundation
+
+protocol StartViewModelProtocol: AnyObject {
+    var selectedTargetArea: TargetArea { get }
+    var selectedWorkoutType: WorkoutType { get }
+    var selectedEquipment: Equipment { get }
+    func select(option: SetupProtocol)
+    func next()
+    var onUpdate: (() -> Void)? { get set }
+    var onNext: ((WorkoutModel) -> Void)? { get set }
+}
+
+final class StartViewModel: StartViewModelProtocol {
+
+    private(set) var selectedTargetArea: TargetArea
+    private(set) var selectedWorkoutType: WorkoutType
+    private(set) var selectedEquipment: Equipment
+    private let workoutModel: WorkoutModel
+
+    var onUpdate: (() -> Void)?
+    var onNext: ((WorkoutModel) -> Void)?
+
+    init() {
+        selectedTargetArea = TargetArea.default
+        selectedWorkoutType = WorkoutType.default
+        selectedEquipment = Equipment.default
+        workoutModel = WorkoutModel(targetArea: TargetArea.default, workoutType: WorkoutType.default, equipment: Equipment.default)
+    }
+
+    func select(option: SetupProtocol) {
+        switch option.setupType {
+        case .targetArea:
+            guard let value = option as? TargetArea else { return }
+            selectedTargetArea = value
+            workoutModel.targetArea = value
+        case .workoutType:
+            guard let value = option as? WorkoutType else { return }
+            selectedWorkoutType = value
+            workoutModel.workoutType = value
+        case .equipment:
+            guard let value = option as? Equipment else { return }
+            selectedEquipment = value
+            workoutModel.equipment = value
+        }
+        onUpdate?()
+    }
+    
+    func next() {
+        onNext?(workoutModel)
+    }
+}

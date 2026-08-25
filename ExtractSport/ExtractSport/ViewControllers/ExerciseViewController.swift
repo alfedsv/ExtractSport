@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ExerciseViewController: UIViewController {
+final class ExerciseViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

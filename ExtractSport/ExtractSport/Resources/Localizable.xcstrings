@@ -1,0 +1,292 @@
+{
+  "sourceLanguage" : "ru",
+  "strings" : {
+    "largeButton.begin" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Начать тренировку"
+          }
+        }
+      }
+    },
+    "largeButton.next" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дальше"
+          }
+        }
+      }
+    },
+    "recomendation.circuit" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Для выбранного типа тренировки желательно выполнять упражнения быстро и интенсивно"
+          }
+        }
+      }
+    },
+    "recomendation.endurance" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Для выбранного типа тренировки желательновыполнять упражнения в среднем темпе и ритмично"
+          }
+        }
+      }
+    },
+    "recomendation.explosivePower" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Для выбранного типа тренировки желательно выполнять упражнения с максимальным взрывным усилием"
+          }
+        }
+      }
+    },
+    "recomendation.strength" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Для выбранного типа тренировки желательно выполнять упражнения медленно и контролируемо"
+          }
+        }
+      }
+    },
+    "recomendation.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Рекомендация:"
+          }
+        }
+      }
+    },
+    "setupButton.absAndCore" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Живот и корпус"
+          }
+        }
+      }
+    },
+    "setupButton.armsAndShoulders" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Руки и плечи"
+          }
+        }
+      }
+    },
+    "setupButton.back" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Спина"
+          }
+        }
+      }
+    },
+    "setupButton.bodyweight" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Со своим весом"
+          }
+        }
+      }
+    },
+    "setupButton.chest" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Грудь"
+          }
+        }
+      }
+    },
+    "setupButton.circuit" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Круговая"
+          }
+        }
+      }
+    },
+    "setupButton.endurance" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выносливость"
+          }
+        }
+      }
+    },
+    "setupButton.explosivePower" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Взрывная сила"
+          }
+        }
+      }
+    },
+    "setupButton.fullBody" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Все тело"
+          }
+        }
+      }
+    },
+    "setupButton.gym" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Спортзал"
+          }
+        }
+      }
+    },
+    "setupButton.homeGym" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Домашний спортзал"
+          }
+        }
+      }
+    },
+    "setupButton.legs" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ноги"
+          }
+        }
+      }
+    },
+    "setupButton.outdoorPark" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Уличный парк"
+          }
+        }
+      }
+    },
+    "setupButton.strength" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Силовая"
+          }
+        }
+      }
+    },
+    "setupTitle.equipment" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Наличие инвентаря"
+          }
+        }
+      }
+    },
+    "setupTitle.targetArea" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Зона проработки"
+          }
+        }
+      }
+    },
+    "setupTitle.workoutType" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Тип тренировки"
+          }
+        }
+      }
+    },
+    "slider.minutes" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "мин"
+          }
+        }
+      }
+    },
+    "slider.variants" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "вариантов"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.1"
+}

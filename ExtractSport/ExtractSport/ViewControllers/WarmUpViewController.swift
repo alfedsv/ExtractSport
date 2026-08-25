@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class WarmUpViewController: UIViewController {
+final class WarmUpViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

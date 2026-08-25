@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CoolDownViewController: UIViewController {
+final class CoolDownViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
