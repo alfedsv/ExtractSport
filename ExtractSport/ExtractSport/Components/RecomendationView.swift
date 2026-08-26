@@ -27,6 +27,7 @@ final class RecomendationView: UIView {
     
     init(workoutType: WorkoutType) {
         super.init(frame: .zero)
+        layer.cornerRadius = 10
         addSubview(titleLabel)
         addSubview(textLabel)
         backgroundColor = UIColor(named: "recomendationBackground")
@@ -54,12 +55,12 @@ extension RecomendationView {
         textLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 7),
-            titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 7),
+            titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
+            titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8),
             
-            textLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 7),
-            textLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -7),
-            textLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 7),
+            textLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
+            textLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8),
+            textLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
             textLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -14)
         ])
     }

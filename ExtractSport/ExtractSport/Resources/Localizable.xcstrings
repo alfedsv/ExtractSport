@@ -1,6 +1,39 @@
 {
   "sourceLanguage" : "ru",
   "strings" : {
+    "controlButton.onceMore" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Еще раз"
+          }
+        }
+      }
+    },
+    "controlButton.start" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Старт"
+          }
+        }
+      }
+    },
+    "controlButton.stop" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Стоп"
+          }
+        }
+      }
+    },
     "largeButton.begin" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -232,6 +265,17 @@
         }
       }
     },
+    "setupTitle.duration" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Время тренировки"
+          }
+        }
+      }
+    },
     "setupTitle.equipment" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -239,6 +283,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Наличие инвентаря"
+          }
+        }
+      }
+    },
+    "setupTitle.exercisesCount" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Количество упражнений"
           }
         }
       }
@@ -283,6 +338,116 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "вариантов"
+          }
+        }
+      }
+    },
+    "title.coolDown" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Заминка"
+          }
+        }
+      }
+    },
+    "title.warmUp" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Разминка"
+          }
+        }
+      }
+    },
+    "warnins.coolDown.back" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Доделать заминку"
+          }
+        }
+      }
+    },
+    "warnins.coolDown.goOn" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Завершить"
+          }
+        }
+      }
+    },
+    "warnins.coolDown.message" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Без полного завершения заминки есть высокая вероятность получения травмы."
+          }
+        }
+      }
+    },
+    "warnins.coolDown.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Завершить тренировку?"
+          }
+        }
+      }
+    },
+    "warnins.warmUp.back" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Доделать разминку"
+          }
+        }
+      }
+    },
+    "warnins.warmUp.goOn" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дальше"
+          }
+        }
+      }
+    },
+    "warnins.warmUp.message" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Если не сделать хорошую разминку, есть опасность получить травму."
+          }
+        }
+      }
+    },
+    "warnins.warmUp.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Разминка не закончена!"
           }
         }
       }

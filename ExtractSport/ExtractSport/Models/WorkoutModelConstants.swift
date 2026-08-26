@@ -14,4 +14,8 @@ struct WorkoutModelConstants {
     static let exerciseCountMax: Int = 15
     static let workoutDurationDefault: Int = 50
     static let exerciseCountDefault: Int = 5
+    static let warmUpExerciseCount: Int = 6
+    static let coolDownExerciseCount: Int = 6
+    static let warmUpDuration: Int = 40
+    static let coolDownDuration: Int = 60
 }

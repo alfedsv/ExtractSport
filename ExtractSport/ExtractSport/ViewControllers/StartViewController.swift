@@ -31,8 +31,8 @@ final class StartViewController: BaseViewController {
             self?.updateUI()
         }
         viewModel.onNext = { [weak self] workoutModel in
-            let setupViewController = SetupViewController(workoutModel: workoutModel)
-            self?.navigationController?.pushViewController(setupViewController, animated: true)
+            let viewController = SetupViewController(workoutModel: workoutModel)
+            self?.navigationController?.pushViewController(viewController, animated: true)
         }
     }
     
@@ -195,10 +195,10 @@ final class StartViewController: BaseViewController {
         viewModel.next()
     }
 }
-
-
 extension StartViewController {
     private func setupConstraints(mainStack: UIStackView, nextButton: UIButton, spacers: (top: UIView, middle1: UIView, middle2: UIView, bottom: UIView)) {
+        nextButton.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
             mainStack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
             mainStack.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
@@ -211,7 +211,7 @@ extension StartViewController {
             
             nextButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 45),
             nextButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -45),
-            nextButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            nextButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -25),
             nextButton.heightAnchor.constraint(equalToConstant: 45)
         ])
     }

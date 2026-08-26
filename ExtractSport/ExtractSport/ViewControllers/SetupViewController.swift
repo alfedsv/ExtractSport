@@ -5,20 +5,66 @@
 //  Created by  Alexander Fedoseev on 25.08.2026.
 //
 
+
 import UIKit
 
 final class SetupViewController: BaseViewController {
     
     private let viewModel: SetupViewModelProtocol
     
-    private let firstSlider = UISlider()
-    private let secondSlider = UISlider()
+    private let durationSlider: UISlider = {
+        let slider = UISlider()
+        slider.minimumValue = Float(WorkoutModelConstants.workoutDurationMin)
+        slider.maximumValue = Float(WorkoutModelConstants.workoutDurationMax)
+        slider.isContinuous = true
+        slider.minimumTrackTintColor = UIColor(named: "sliderActive")
+        slider.maximumTrackTintColor = UIColor(named: "sliderUnactive")
+        return slider
+    }()
 
-    private let firstTitleLabel = UILabel()
-    private let secondTitleLabel = UILabel()
+    private let exercisesSlider: UISlider = {
+        let slider = UISlider()
+        slider.minimumValue = Float(WorkoutModelConstants.exerciseCountMin)
+        slider.maximumValue = Float(WorkoutModelConstants.exerciseCountMax)
+        slider.isContinuous = true
+        slider.minimumTrackTintColor = UIColor(named: "sliderActive")
+        slider.maximumTrackTintColor = UIColor(named: "sliderUnactive")
+        return slider
+    }()
 
-    private let firstValueLabel = UILabel()
-    private let secondValueLabel = UILabel()
+    private let durationTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "setupTitle.duration".localized
+        label.font = .systemFont(ofSize: 24)
+        label.textAlignment = .center
+        label.textColor = UIColor(named: "labelText")
+        return label
+    }()
+
+    private let exercisesTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "setupTitle.exercisesCount".localized
+        label.font = .systemFont(ofSize: 24)
+        label.textAlignment = .center
+        label.textColor = UIColor(named: "labelText")
+        return label
+    }()
+
+    private let durationValueLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 14)
+        label.textColor = UIColor(named: "labelText")
+        label.textAlignment = .left
+        return label
+    }()
+
+    private let exercisesValueLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 14)
+        label.textColor = UIColor(named: "labelText")
+        label.textAlignment = .left
+        return label
+    }()
     
     private let recomendationView: RecomendationView
 
@@ -43,61 +89,40 @@ final class SetupViewController: BaseViewController {
     }
     
     private func bindViewModel() {
-        
         viewModel.onUpdate = { [weak self] in
             self?.setupValues()
         }
         
         viewModel.onNext = { [weak self] workoutModel in
-            let setupViewController = SetupViewController(workoutModel: workoutModel)
-            self?.navigationController?.pushViewController(setupViewController, animated: true)
+            let viewController = WarmUpCoolDownViewController(controllerType: .warmUp, workoutModel: workoutModel)
+            self?.navigationController?.pushViewController(viewController, animated: true)
         }
     }
     
     private func setupUI() {
-        firstTitleLabel.text = "Первый ползунок"
-        firstTitleLabel.font = .systemFont(ofSize: 24)
-        firstTitleLabel.textAlignment = .center
-        firstTitleLabel.textColor = UIColor(named: "labelText")
-        
-        secondTitleLabel.text = "Второй ползунок"
-        secondTitleLabel.font = .systemFont(ofSize: 24)
-        secondTitleLabel.textAlignment = .center
-        secondTitleLabel.textColor = UIColor(named: "labelText")
+        durationSlider.addTarget(self, action: #selector(sliderValueChanged(_:)), for: .valueChanged)
+        exercisesSlider.addTarget(self, action: #selector(sliderValueChanged(_:)), for: .valueChanged)
+        nextButton.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
 
-        firstSlider.minimumValue = Float(WorkoutModelConstants.workoutDurationMin)
-        firstSlider.maximumValue = Float(WorkoutModelConstants.workoutDurationMax)
-        firstSlider.isContinuous = true
-        firstSlider.addTarget(self, action: #selector(sliderValueChanged(_:)), for: .valueChanged)
-        firstSlider.minimumTrackTintColor = UIColor(named: "sliderActive")
-        firstSlider.maximumTrackTintColor = UIColor(named: "sliderUnactive")
-
-        secondSlider.minimumValue = Float(WorkoutModelConstants.exerciseCountMin)
-        secondSlider.maximumValue = Float(WorkoutModelConstants.exerciseCountMax)
-        secondSlider.isContinuous = true
-        secondSlider.addTarget(self, action: #selector(sliderValueChanged(_:)), for: .valueChanged)
-        secondSlider.minimumTrackTintColor = UIColor(named: "sliderActive")
-        secondSlider.maximumTrackTintColor = UIColor(named: "sliderUnactive")
-
-        [firstValueLabel, secondValueLabel].forEach { label in
-            label.font = .systemFont(ofSize: 14)
-            label.textColor = UIColor(named: "labelText")
-            label.textAlignment = .left
-        }
-
-        nextButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-        
-        [firstTitleLabel, firstSlider, firstValueLabel, secondTitleLabel, secondSlider, secondValueLabel, nextButton, recomendationView].forEach {
+        [
+            durationTitleLabel,
+            durationSlider,
+            durationValueLabel,
+            exercisesTitleLabel,
+            exercisesSlider,
+            exercisesValueLabel,
+            nextButton,
+            recomendationView
+        ].forEach {
             view.addSubview($0)
-            $0.translatesAutoresizingMaskIntoConstraints = false
         }
     }
 
     private func setupValues() {
-        firstSlider.value = Float(viewModel.workoutDuration)
-        secondSlider.value = Float(viewModel.exerciseCount)
-        firstValueLabel.text = String(viewModel.workoutDuration) + " " + "slider.minutes".localized
-        secondValueLabel.text = String(viewModel.exerciseCount) + " " + "slider.variants".localized
+        durationSlider.value = Float(viewModel.workoutDuration)
+        exercisesSlider.value = Float(viewModel.exerciseCount)
+        durationValueLabel.text = String(viewModel.workoutDuration) + " " + "slider.minutes".localized
+        exercisesValueLabel.text = String(viewModel.exerciseCount) + " " + "slider.variants".localized
     }
 
     @objc
@@ -105,48 +130,56 @@ final class SetupViewController: BaseViewController {
         let rounded = round(slider.value)
         slider.value = rounded
         let intValue = Int(slider.value)
-        if slider == firstSlider {
+        if slider == durationSlider {
             viewModel.workoutDurationUpdate(minuts: intValue)
-        } else if slider == secondSlider {
+        } else if slider == exercisesSlider {
             viewModel.exerciseCountUpdate(count: intValue)
         }
     }
 
     @objc
-    private func buttonTapped() {
-        let firstVal = Int(firstSlider.value)
-        let secondVal = Int(secondSlider.value)
-        let message = "Первый: \(firstVal)\nВторой: \(secondVal)"
-        let alert = UIAlertController(title: "Значения слайдеров", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alert, animated: true)
+    private func nextButtonTapped() {
+        viewModel.next()
     }
-
 }
 extension SetupViewController {
     private func setupConstraints() {
+        [
+            durationTitleLabel,
+            durationSlider,
+            durationValueLabel,
+            exercisesTitleLabel,
+            exercisesSlider,
+            exercisesValueLabel,
+            nextButton,
+            recomendationView,
+            nextButton
+        ].forEach {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+        }
+
         NSLayoutConstraint.activate([
-            firstTitleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 60),
-            firstTitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            firstTitleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            durationTitleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 60),
+            durationTitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            durationTitleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
-            firstSlider.topAnchor.constraint(equalTo: firstTitleLabel.bottomAnchor, constant: 8),
-            firstSlider.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            firstSlider.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            durationSlider.topAnchor.constraint(equalTo: durationTitleLabel.bottomAnchor, constant: 8),
+            durationSlider.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            durationSlider.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
-            firstValueLabel.topAnchor.constraint(equalTo: firstSlider.bottomAnchor, constant: 4),
-            firstValueLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            durationValueLabel.topAnchor.constraint(equalTo: durationSlider.bottomAnchor, constant: 4),
+            durationValueLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             
-            secondTitleLabel.topAnchor.constraint(equalTo: firstValueLabel.bottomAnchor, constant: 30),
-            secondTitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            secondTitleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            exercisesTitleLabel.topAnchor.constraint(equalTo: durationValueLabel.bottomAnchor, constant: 30),
+            exercisesTitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            exercisesTitleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
-            secondSlider.topAnchor.constraint(equalTo: secondTitleLabel.bottomAnchor, constant: 8),
-            secondSlider.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            secondSlider.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            exercisesSlider.topAnchor.constraint(equalTo: exercisesTitleLabel.bottomAnchor, constant: 8),
+            exercisesSlider.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            exercisesSlider.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
-            secondValueLabel.topAnchor.constraint(equalTo: secondSlider.bottomAnchor, constant: 4),
-            secondValueLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            exercisesValueLabel.topAnchor.constraint(equalTo: exercisesSlider.bottomAnchor, constant: 4),
+            exercisesValueLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             
             recomendationView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             recomendationView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
@@ -154,7 +187,7 @@ extension SetupViewController {
             
             nextButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 45),
             nextButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -45),
-            nextButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            nextButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -25),
             nextButton.heightAnchor.constraint(equalToConstant: 45)
         ])
     }
