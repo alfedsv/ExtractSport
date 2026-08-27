@@ -13,7 +13,7 @@ final class LargeButton: UIButton {
         super.init(frame: .zero)
         setTitle(title, for: .normal)
         titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .medium)
-        backgroundColor = UIColor(named: "Buttons/active")
+        backgroundColor = UIColor(named: "Buttons/next")
         setTitleColor(UIColor(named: "Buttons/text"), for: .normal)
         layer.cornerRadius = 10
     }

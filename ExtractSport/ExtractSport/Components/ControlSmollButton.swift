@@ -9,7 +9,7 @@ import UIKit
 
 final class ControlSmollButton: UIButton {
 
-    var currentState: WarmUpCoolDownModel.CurrentState = .running {
+    var currentState: WarmUpCoolDownModel.CurrentState = .begin {
         didSet {
             updateUI()
         }
@@ -24,7 +24,13 @@ final class ControlSmollButton: UIButton {
     init() {
         super.init(frame: .zero)
         titleLabel?.font = .systemFont(ofSize: 14)
+        setTitleColor(UIColor(named: "Buttons/text"), for: .normal)
         layer.cornerRadius = 10
+        updateUI()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     private func updateUI() {
@@ -50,9 +56,5 @@ final class ControlSmollButton: UIButton {
                 isHidden = false
             }
         }
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }

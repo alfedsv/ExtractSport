@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - Расширение для локализации строк
 extension String {
     var localized: String {
         String(localized: String.LocalizationValue(self))

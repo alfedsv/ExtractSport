@@ -54,7 +54,7 @@ final class WarmUpCoolDownViewController: BaseViewController {
         viewModel.onNext = { [weak self] controllerType, workoutModel in
             switch controllerType {
             case .warmUp:
-                let viewController = ExerciseViewController()
+                let viewController = ExerciseViewController(workoutModel: workoutModel)
                 self?.navigationController?.pushViewController(viewController, animated: true)
             case .coolDown:
                 let viewController = FinishViewController()
@@ -145,7 +145,7 @@ extension WarmUpCoolDownViewController{
             stackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
             stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5),
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5),
-            
+
             nextButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 20),
             nextButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 45),
             nextButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -45),

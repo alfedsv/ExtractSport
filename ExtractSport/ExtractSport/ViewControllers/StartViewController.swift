@@ -30,8 +30,8 @@ final class StartViewController: BaseViewController {
         viewModel.onUpdate = { [weak self] in
             self?.updateUI()
         }
-        viewModel.onNext = { [weak self] workoutModel in
-            let viewController = SetupViewController(workoutModel: workoutModel)
+        viewModel.onNext = { [weak self] targetArea, workoutType, equipment in
+            let viewController = SetupViewController(targetArea: targetArea, workoutType: workoutType, equipment: equipment)
             self?.navigationController?.pushViewController(viewController, animated: true)
         }
     }

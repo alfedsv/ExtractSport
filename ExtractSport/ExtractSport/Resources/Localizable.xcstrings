@@ -1,6 +1,17 @@
 {
   "sourceLanguage" : "ru",
   "strings" : {
+    "controlButton.finished" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Закончено"
+          }
+        }
+      }
+    },
     "controlButton.onceMore" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -30,6 +41,61 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Стоп"
+          }
+        }
+      }
+    },
+    "exercise.durationRest" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Время на отдых:"
+          }
+        }
+      }
+    },
+    "exercise.durationSets" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Время на работу:"
+          }
+        }
+      }
+    },
+    "exercise.secunds" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "сек"
+          }
+        }
+      }
+    },
+    "exercise.setsCount" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Подходов:"
+          }
+        }
+      }
+    },
+    "exercise.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Упражнение"
           }
         }
       }

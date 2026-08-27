@@ -78,7 +78,6 @@ final class WarmUpCoolDownItemViewModel: WarmUpCoolDownItemViewModelInternalProt
                 self.model.progress = model.duration
                 self.onUpdate?()
                 self.onExerciseEnded?(self.model.id)
-                print(self.model.progress)
                 return
             }
             self.model.progress = Int(Double(self.model.progress) + 1.0)

@@ -70,9 +70,9 @@ final class SetupViewController: BaseViewController {
 
     private let nextButton = LargeButton(title: "largeButton.begin".localized)
 
-    init(workoutModel: WorkoutModel) {
-        self.viewModel = SetupViewModel(workoutModel: workoutModel)
-        self.recomendationView = RecomendationView(workoutType: workoutModel.workoutType)
+    init(targetArea: TargetArea, workoutType: WorkoutType, equipment: Equipment) {
+        self.viewModel = SetupViewModel(targetArea: targetArea, workoutType: workoutType, equipment: equipment)
+        self.recomendationView = RecomendationView(workoutType: workoutType)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -119,9 +119,9 @@ final class SetupViewController: BaseViewController {
     }
 
     private func setupValues() {
-        durationSlider.value = Float(viewModel.workoutDuration)
+        durationSlider.value = Float(viewModel.workoutDurationMinutes)
         exercisesSlider.value = Float(viewModel.exerciseCount)
-        durationValueLabel.text = String(viewModel.workoutDuration) + " " + "slider.minutes".localized
+        durationValueLabel.text = String(viewModel.workoutDurationMinutes) + " " + "slider.minutes".localized
         exercisesValueLabel.text = String(viewModel.exerciseCount) + " " + "slider.variants".localized
     }
 
