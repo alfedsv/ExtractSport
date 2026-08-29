@@ -7,12 +7,13 @@
 
 import Foundation
 
-struct WarmUpCoolDownModel {
+final class WarmUpCoolDownModel {
     
     enum CurrentState {
         case running
         case begin
         case ended
+        case stoped
     }
     
     let id: UUID
@@ -24,7 +25,15 @@ struct WarmUpCoolDownModel {
     var currentState: CurrentState = .begin
     var isLocked: Bool = false
     
-    mutating func setAsDone() {
+    init(id: UUID, imageData: Data?, title: String, description: String, duration: Int) {
+        self.id = id
+        self.imageData = imageData
+        self.title = title
+        self.description = description
+        self.duration = duration
+    }
+    
+    func setAsDone() {
         self.progress = self.duration
         self.currentState = .ended
         self.isLocked = false

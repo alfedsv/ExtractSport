@@ -24,8 +24,8 @@ final class SetupViewController: BaseViewController {
 
     private let exercisesSlider: UISlider = {
         let slider = UISlider()
-        slider.minimumValue = Float(WorkoutModelConstants.exerciseCountMin)
-        slider.maximumValue = Float(WorkoutModelConstants.exerciseCountMax)
+        slider.minimumValue = Float(WorkoutModelConstants.exercisesCountMin)
+        slider.maximumValue = Float(WorkoutModelConstants.exercisesCountMax)
         slider.isContinuous = true
         slider.minimumTrackTintColor = UIColor(named: "sliderActive")
         slider.maximumTrackTintColor = UIColor(named: "sliderUnactive")
@@ -120,9 +120,9 @@ final class SetupViewController: BaseViewController {
 
     private func setupValues() {
         durationSlider.value = Float(viewModel.workoutDurationMinutes)
-        exercisesSlider.value = Float(viewModel.exerciseCount)
+        exercisesSlider.value = Float(viewModel.exercisesCount)
         durationValueLabel.text = String(viewModel.workoutDurationMinutes) + " " + "slider.minutes".localized
-        exercisesValueLabel.text = String(viewModel.exerciseCount) + " " + "slider.variants".localized
+        exercisesValueLabel.text = String(viewModel.exercisesCount) + " " + "slider.variants".localized
     }
 
     @objc
@@ -133,7 +133,7 @@ final class SetupViewController: BaseViewController {
         if slider == durationSlider {
             viewModel.workoutDurationUpdate(minuts: intValue)
         } else if slider == exercisesSlider {
-            viewModel.exerciseCountUpdate(count: intValue)
+            viewModel.exercisesCountUpdate(count: intValue)
         }
     }
 

@@ -84,13 +84,12 @@ final class WarmUpCoolDownView: UIView {
 
         titleLabel.text = viewModel.model.title
         descriptionLabel.text = viewModel.model.description
-
         progressView.progressTintColor = UIColor(named: "progressBar")
-
         button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         button.currentState = viewModel.model.currentState
 
         setupConstraints()
+        updateProgressBar()
     }
     
     private func updateProgressBar() {

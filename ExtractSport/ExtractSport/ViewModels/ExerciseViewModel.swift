@@ -17,8 +17,10 @@ protocol ExerciseViewModelProtocol: AnyObject {
     var onStoped: (() -> Void)? { get set }
     var onEnded: (() -> Void)? { get set }
     var onNext: ((WorkoutModel) -> Void)? { get set }
+    var onNextToCoolDown: ((WorkoutModel) -> Void)? { get set }
     func control()
     func next()
+    func back()
 }
 
 final class ExerciseViewModel: ExerciseViewModelProtocol {
@@ -31,15 +33,17 @@ final class ExerciseViewModel: ExerciseViewModelProtocol {
     var onStoped: (() -> Void)?
     var onEnded: (() -> Void)?
     var onNext: ((WorkoutModel) -> Void)?
-    private var exerciseIndex: Int
+    var onNextToCoolDown: ((WorkoutModel) -> Void)?
+    private var exerciseIndex: Int {
+        return workoutModel.currentExerciseIndex
+    }
     private let workoutModel: WorkoutModel
     private var timer: Timer?
     
     init(workoutModel: WorkoutModel) {
         self.workoutModel = workoutModel
-        self.exerciseIndex = 0
-        self.exerciseModel = workoutModel.exerciseModels[exerciseIndex]
-        self.exerciseNumber = exerciseIndex + 1
+        self.exerciseModel = workoutModel.exerciseModels[workoutModel.currentExerciseIndex]
+        self.exerciseNumber = workoutModel.currentExerciseIndex + 1
         self.exercisesCount = workoutModel.exerciseModels.count
     }
     
@@ -96,9 +100,30 @@ final class ExerciseViewModel: ExerciseViewModelProtocol {
         }
     }
 
+    
     func next() {
-        
+        navigation()
+        if exerciseIndex < exercisesCount - 1 {
+            workoutModel.currentExerciseIndex = exerciseIndex + 1
+            onNext?(workoutModel)
+        } else if exerciseIndex == exercisesCount - 1 {
+            onNextToCoolDown?(workoutModel)
+        }
+    }
+    
+    func back() {
+        navigation()
+        if exerciseIndex > 0 {
+            workoutModel.currentExerciseIndex = exerciseIndex - 1
+        }
     }
     
     
+    private func navigation() {
+        if exerciseModel.currentState == .running {
+            exerciseModel.currentState = .stoped
+            stopTimer()
+            onStoped?()
+        }
+    }
 }

@@ -7,33 +7,30 @@
 
 import Foundation
 
-struct WorkoutModel {
+final class WorkoutModel {
 
     var targetArea: TargetArea
     var workoutType : WorkoutType
     var equipment: Equipment
     
     var workoutDuration: Int
-    var exerciseCount: Int
+    var exercisesCount: Int
+    var currentExerciseIndex: Int = 0
 
     var warmUpModels: [WarmUpCoolDownModel] = []
     var exerciseModels: [ExerciseModel] = []
     var coolDownModels: [WarmUpCoolDownModel] = []
 
-    init(targetArea: TargetArea, workoutType: WorkoutType, equipment: Equipment, workoutDuration: Int, exerciseCount: Int) {
+    init(targetArea: TargetArea, workoutType: WorkoutType, equipment: Equipment, workoutDuration: Int, exercisesCount: Int) {
         self.targetArea = targetArea
         self.workoutType = workoutType
         self.equipment = equipment
         self.workoutDuration = workoutDuration
-        self.exerciseCount = exerciseCount
+        self.exercisesCount = exercisesCount
         
-        //self.workoutDuration = WorkoutModelConstants.workoutDurationDefault
-        //self.exerciseCount = WorkoutModelConstants.exerciseCountDefault
-        
-        warmUpModels = generateRandomModels(count: WorkoutModelConstants.warmUpExerciseCount, duration: WorkoutModelConstants.warmUpDuration)
-        coolDownModels = generateRandomModels(count: WorkoutModelConstants.coolDownExerciseCount, duration: WorkoutModelConstants.coolDownDuration)
-        print("workoutDuration = \(workoutDuration)")
-        let workoutHelper = WorkoutHelper(totalDuration: workoutDuration, userExerciseCount: exerciseCount, workoutType: workoutType)
+        warmUpModels = generateRandomModels(count: WorkoutModelConstants.warmUpExercisesCount, duration: WorkoutModelConstants.warmUpDuration)
+        coolDownModels = generateRandomModels(count: WorkoutModelConstants.coolDownExercisesCount, duration: WorkoutModelConstants.coolDownDuration)
+        let workoutHelper = WorkoutHelper(totalDuration: workoutDuration, userExercisesCount: exercisesCount, workoutType: workoutType)
         exerciseModels = generateRandomModels(exercisePlanModels: workoutHelper.exercisePlans)
     }
     
@@ -64,9 +61,7 @@ struct WorkoutModel {
                 imageData: nil,
                 title: generateRandomString(length: titleLength),
                 description: generateRandomString(length: descriptionLength),
-                progress: 0,
-                duration: duration,
-                currentState: .begin
+                duration: duration
             )
             models.append(model)
         }
@@ -75,11 +70,12 @@ struct WorkoutModel {
     
     func generateRandomModels(exercisePlanModels: [WorkoutHelper.ExercisePlanModel]) -> [ExerciseModel] {
         var models: [ExerciseModel] = []
-        for exercisePlanModel in exercisePlanModels {
+        for (index, exercisePlanModel) in exercisePlanModels.enumerated() {
             let titleLength = Int.random(in: 3...12)
             let descriptionLength = Int.random(in: 20...220)
             let model = ExerciseModel(
                 id: UUID(),
+                index: index,
                 title: generateRandomString(length: titleLength),
                 description: generateRandomString(length: descriptionLength),
                 imageData: nil,

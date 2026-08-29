@@ -46,6 +46,15 @@ final class WarmUpCoolDownViewController: BaseViewController {
         setupItems()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if isMovingFromParent {
+            viewModel.back()
+            print("Возвращаемся назад")
+        }
+        
+    }
+    
     private func bindViewModel() {
         viewModel.onShowWarning = { [weak self] controllerType in
             self?.showWarning(controllerType: controllerType)

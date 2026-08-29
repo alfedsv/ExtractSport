@@ -120,8 +120,20 @@ final class ExerciseViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("Index \(viewModel.exerciseNumber - 1)")
         setupUI()
         bindViewModel()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if isMovingFromParent {
+            viewModel.back()
+            print("Возвращаемся назад, Index \(viewModel.exerciseNumber - 1)")
+        } else {
+            print("Идем вперед")
+        }
+        
     }
 
     private func bindViewModel() {
@@ -139,6 +151,16 @@ final class ExerciseViewController: BaseViewController {
         
         viewModel.onEnded = { [weak self] in
             self?.controlButton.currentState = .ended
+        }
+        
+        viewModel.onNextToCoolDown = { [weak self] workoutModel in
+            let viewController = WarmUpCoolDownViewController(controllerType: .coolDown, workoutModel: workoutModel)
+            self?.navigationController?.pushViewController(viewController, animated: true)
+        }
+        
+        viewModel.onNext = { [weak self] workoutModel in
+            let viewController = ExerciseViewController(workoutModel: workoutModel)
+            self?.navigationController?.pushViewController(viewController, animated: true)
         }
     }
     
@@ -195,6 +217,7 @@ final class ExerciseViewController: BaseViewController {
         }
 
         contentView.addSubview(nextButton)
+        nextButton.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
         setupConstraints()
         updateProgressBars()
     }
@@ -259,6 +282,11 @@ final class ExerciseViewController: BaseViewController {
     @objc
     private func controlButtonTapped() {
         viewModel.control()
+    }
+    
+    @objc
+    private func nextButtonTapped() {
+        viewModel.next()
     }
 
 }

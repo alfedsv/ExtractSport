@@ -54,6 +54,11 @@ final class ControlSmollButton: UIButton {
                 backgroundColor = UIColor(named: "Buttons/onceMore")
                 isUserInteractionEnabled = true
                 isHidden = false
+            case .stoped:
+                setTitle("controlButton.start".localized, for: .normal)
+                backgroundColor = UIColor(named: "Buttons/active")
+                isUserInteractionEnabled = true
+                isHidden = false
             }
         }
     }

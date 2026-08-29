@@ -13,6 +13,7 @@ protocol WarmUpCoolDownViewModelProtocol: AnyObject {
     var onNext: ((WarmUpCoolDownViewModel.ControllerType, WorkoutModel) -> Void)? { get set }
     func tryNext()
     func next()
+    func back()
 }
 
 final class WarmUpCoolDownViewModel: WarmUpCoolDownViewModelProtocol {
@@ -97,4 +98,13 @@ final class WarmUpCoolDownViewModel: WarmUpCoolDownViewModelProtocol {
         setAllAsDone()
         onNext?(controllerType, workoutModel)
     }
+    
+    func back() {
+        if controllerType == .coolDown {
+            for itemViewModel in self.itemViewModels {
+                itemViewModel.model.currentState = .stoped
+            }
+        }
+    }
+
 }

@@ -100,6 +100,116 @@
         }
       }
     },
+    "finish.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Тренировка завершена!"
+          }
+        }
+      }
+    },
+    "finish.win0" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сила растёт с каждым днём!"
+          }
+        }
+      }
+    },
+    "finish.win1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Все упражнения позади!"
+          }
+        }
+      }
+    },
+    "finish.win2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ты становишься сильнее!"
+          }
+        }
+      }
+    },
+    "finish.win3" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Твоя сила — в твоей дисциплине!"
+          }
+        }
+      }
+    },
+    "finish.win4" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ещё один шаг к твоей лучшей форме!"
+          }
+        }
+      }
+    },
+    "finish.win5" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Твоя сила прокачена!"
+          }
+        }
+      }
+    },
+    "finish.win6" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Твоя выносливость растёт!"
+          }
+        }
+      }
+    },
+    "finish.win7" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Энергия и сила — теперь твои союзники!"
+          }
+        }
+      }
+    },
+    "finish.win8" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ты строишь силу по кирпичику!"
+          }
+        }
+      }
+    },
     "largeButton.begin" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -118,6 +228,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Дальше"
+          }
+        }
+      }
+    },
+    "largeButton.toMain" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "На главную страницу"
           }
         }
       }

@@ -10,18 +10,18 @@ import Foundation
 protocol SetupViewModelProtocol: AnyObject {
 
     var workoutDurationMinutes: Int { get }
-    var exerciseCount: Int { get }
+    var exercisesCount: Int { get }
     var onUpdate: (() -> Void)? { get set }
     var onNext: ((WorkoutModel) -> Void)? { get set }
     func workoutDurationUpdate(minuts: Int)
-    func exerciseCountUpdate(count: Int)
+    func exercisesCountUpdate(count: Int)
     func next()
 }
 
 final class SetupViewModel: SetupViewModelProtocol {
     
     private(set) var workoutDurationMinutes: Int
-    private(set) var exerciseCount: Int
+    private(set) var exercisesCount: Int
     private let targetArea: TargetArea
     private let workoutType: WorkoutType
     private let equipment: Equipment
@@ -34,7 +34,7 @@ final class SetupViewModel: SetupViewModelProtocol {
         self.workoutType = workoutType
         self.equipment = equipment
         self.workoutDurationMinutes = WorkoutModelConstants.workoutDurationDefault
-        self.exerciseCount = WorkoutModelConstants.exerciseCountDefault
+        self.exercisesCount = WorkoutModelConstants.exercisesCountDefault
     }
     
     func workoutDurationUpdate(minuts: Int) {
@@ -42,19 +42,21 @@ final class SetupViewModel: SetupViewModelProtocol {
         self.onUpdate?()
     }
 
-    func exerciseCountUpdate(count: Int) {
-        self.exerciseCount = count
+    func exercisesCountUpdate(count: Int) {
+        self.exercisesCount = count
         self.onUpdate?()
     }
 
     func next() {
-        let workoutModel = WorkoutModel(
-            targetArea: targetArea,
-            workoutType: workoutType,
-            equipment: equipment,
-            workoutDuration: workoutDurationMinutes * 60,
-            exerciseCount: exerciseCount
-        )
-        onNext?(workoutModel)
+        if exercisesCount > 0 {
+            let workoutModel = WorkoutModel(
+                targetArea: targetArea,
+                workoutType: workoutType,
+                equipment: equipment,
+                workoutDuration: workoutDurationMinutes * 60,
+                exercisesCount: exercisesCount
+            )
+            onNext?(workoutModel)
+        }
     }
 }

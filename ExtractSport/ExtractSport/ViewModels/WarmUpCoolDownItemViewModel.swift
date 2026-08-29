@@ -45,7 +45,7 @@ final class WarmUpCoolDownItemViewModel: WarmUpCoolDownItemViewModelInternalProt
         switch model.currentState {
         case .running:
             break
-        case .begin:
+        case .begin, .stoped:
             onExerciseBegins?(self.model.id)
             model.currentState = .running
             startTimer()

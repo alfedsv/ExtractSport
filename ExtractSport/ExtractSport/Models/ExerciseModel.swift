@@ -17,6 +17,7 @@ final class ExerciseModel {
     }
 
     let id: UUID
+    let index: Int
     let title: String
     let description: String
     let imageData: Data?
@@ -28,8 +29,9 @@ final class ExerciseModel {
     let exerciseDuration: Int   // время выполнения всего уражнения
     var progress: Int = 0
 
-    init(id: UUID, title: String, description: String, imageData: Data?, setDuration: Int, recoveryDuration: Int, setsCount: Int, isCircuit: Bool) {
+    init(id: UUID, index: Int, title: String, description: String, imageData: Data?, setDuration: Int, recoveryDuration: Int, setsCount: Int, isCircuit: Bool) {
         self.id = id
+        self.index = index
         self.title = title
         self.description = description
         self.imageData = imageData

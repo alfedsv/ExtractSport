@@ -10,16 +10,16 @@ import Foundation
 final class WorkoutHelper {
     
     struct ExercisePlanModel {
-        let setDuration: Int   // длительность одного подхода (сек)
-        let recoveryDuration: Int      // отдых после подхода (сек)
-        let setsCount: Int          // количество подходов
+        let setDuration: Int            // длительность одного подхода (сек)
+        let recoveryDuration: Int       // отдых после подхода (сек)
+        let setsCount: Int              // количество подходов
     }
     
     private let warmUpDuration: Int = 4 * 60      // 4 мин
     private let coolDownDuration: Int = 3 * 60    // 3 мин
 
     let totalDuration: Int          // общая длительность тренировки (сек)
-    let userExerciseCount: Int      // количество упражнений, выбранное пользователем
+    let userExercisesCount: Int     // количество упражнений, выбранное пользователем
     let workoutType: WorkoutType    // тип тренировки
     
     var mainWorkoutTime: Int {
@@ -45,23 +45,23 @@ final class WorkoutHelper {
         return Int.randomTriangular(min: 1, max: 7, mode: 4)
     }
     
-    var totalExerciseCount: Int {
-        return userExerciseCount * cyclesCount
+    var totalExercisesCount: Int {
+        return userExercisesCount * cyclesCount
     }
     
     var timePerExercise: Int {
         // (mainWorkoutTime - отдых между кругами) / общее количество упражнений
         let available = mainWorkoutTime - (cyclesCount * restBetweenCycles)
         print("available = \(available)")
-        print("totalExerciseCount = \(totalExerciseCount)")
-        print("available / totalExerciseCount = \(available / totalExerciseCount)")
-        return available / totalExerciseCount   // целочисленное деление (округление вниз)
+        print("totalExercisesCount = \(totalExercisesCount)")
+        print("available / totalExerciseCount = \(available / totalExercisesCount)")
+        return available / totalExercisesCount   // целочисленное деление (округление вниз)
     }
     
     var exercisePlans: [ExercisePlanModel] {
         var plan: [ExercisePlanModel] = []
-        print("---totalExerciseCount = \(totalExerciseCount)")
-        for _ in 0..<totalExerciseCount {
+        print("---totalExercisesCount = \(totalExercisesCount)")
+        for _ in 0..<totalExercisesCount {
             let setDuration = randomSetDuration(workoutType: workoutType)   // длительность подхода
             let recoveryDuration = recoveryDuration(workoutType: workoutType, setDuration: setDuration)
             let setsCount = timePerExercise / (setDuration + recoveryDuration)
@@ -74,9 +74,9 @@ final class WorkoutHelper {
         return plan
     }
 
-    init(totalDuration: Int, userExerciseCount: Int, workoutType: WorkoutType) {
+    init(totalDuration: Int, userExercisesCount: Int, workoutType: WorkoutType) {
         self.totalDuration = totalDuration
-        self.userExerciseCount = userExerciseCount
+        self.userExercisesCount = userExercisesCount
         self.workoutType = workoutType
     }
     
