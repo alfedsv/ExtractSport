@@ -13,6 +13,7 @@ final class WorkoutHelper {
         let setDuration: Int            // длительность одного подхода (сек)
         let recoveryDuration: Int       // отдых после подхода (сек)
         let setsCount: Int              // количество подходов
+        let isLastInCycle: Bool         // если последнее упраженеие в круге
     }
     
     private let warmUpDuration: Int = 4 * 60      // 4 мин
@@ -52,24 +53,30 @@ final class WorkoutHelper {
     var timePerExercise: Int {
         // (mainWorkoutTime - отдых между кругами) / общее количество упражнений
         let available = mainWorkoutTime - (cyclesCount * restBetweenCycles)
-        print("available = \(available)")
-        print("totalExercisesCount = \(totalExercisesCount)")
-        print("available / totalExerciseCount = \(available / totalExercisesCount)")
         return available / totalExercisesCount   // целочисленное деление (округление вниз)
     }
     
     var exercisePlans: [ExercisePlanModel] {
         var plan: [ExercisePlanModel] = []
-        print("---totalExercisesCount = \(totalExercisesCount)")
-        for _ in 0..<totalExercisesCount {
-            let setDuration = randomSetDuration(workoutType: workoutType)   // длительность подхода
-            let recoveryDuration = recoveryDuration(workoutType: workoutType, setDuration: setDuration)
-            let setsCount = timePerExercise / (setDuration + recoveryDuration)
-            print("timePerExercise = \(timePerExercise)")
-            print("setDuration = \(setDuration)")
-            print("recoveryDuration = \(recoveryDuration)")
-            print("setsCount = \(setsCount)")
-            plan.append(ExercisePlanModel(setDuration: setDuration, recoveryDuration: recoveryDuration, setsCount: setsCount))
+        print("Создан план тренировки (\(workoutType)):")
+        print("Зона проработки: \(workoutType)")
+        print("Количество упраженений:\t\(totalExercisesCount)")
+        print("Количество кругов:\t\(cyclesCount)")
+        print("Время на всю тренировку:\t\(totalDuration)")
+        for cycle in 0..<cyclesCount {
+            print("Круг (index):\t\(cycle)")
+            for exerciseIndex in 0..<totalExercisesCount {
+                print("Упражнение (index):\t\(exerciseIndex)")
+                let setDuration = randomSetDuration(workoutType: workoutType)   // длительность подхода
+                let recoveryDuration = recoveryDuration(workoutType: workoutType, setDuration: setDuration)
+                let setsCount = timePerExercise / (setDuration + recoveryDuration)
+                let isLast = (exerciseIndex == userExercisesCount - 1)
+                print("\tКоличество походов:\t\(setsCount)")
+                print("\tВремя на все упраженение:\t\(timePerExercise)")
+                print("\tВремя на один подход:\t\(setDuration)")
+                print("\tВремя на одых после подхода:\t\(recoveryDuration)")
+                plan.append(ExercisePlanModel(setDuration: setDuration, recoveryDuration: recoveryDuration, setsCount: setsCount, isLastInCycle: isLast))
+            }
         }
         return plan
     }

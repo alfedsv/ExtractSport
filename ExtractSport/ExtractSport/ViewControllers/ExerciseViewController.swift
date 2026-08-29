@@ -120,7 +120,6 @@ final class ExerciseViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Index \(viewModel.exerciseNumber - 1)")
         setupUI()
         bindViewModel()
     }
@@ -129,11 +128,7 @@ final class ExerciseViewController: BaseViewController {
         super.viewWillDisappear(animated)
         if isMovingFromParent {
             viewModel.back()
-            print("Возвращаемся назад, Index \(viewModel.exerciseNumber - 1)")
-        } else {
-            print("Идем вперед")
         }
-        
     }
 
     private func bindViewModel() {
@@ -210,7 +205,7 @@ final class ExerciseViewController: BaseViewController {
             progressViews.append(restProgress)
         }
 
-        if viewModel.exerciseModel.isCircuit {
+        if viewModel.exerciseModel.isLastInCycle {
             let (circuitContainer, circuitProgress) = createStepContainer(title: "Отдых", progress: 0.0, tintColor: UIColor(named: "progressBarRest"))
             stackView.addArrangedSubview(circuitContainer)
             progressViews.append(circuitProgress)
@@ -249,8 +244,7 @@ final class ExerciseViewController: BaseViewController {
     
     private func updateProgressBars() {
         guard !progressViews.isEmpty else { return }
-        
-        let totalDuration = viewModel.exerciseModel.exerciseDuration
+
         let currentProgress = viewModel.exerciseModel.progress
         
         var durations: [Int] = []
@@ -258,7 +252,7 @@ final class ExerciseViewController: BaseViewController {
             durations.append(viewModel.exerciseModel.setDuration)
             durations.append(viewModel.exerciseModel.recoveryDuration)
         }
-        if viewModel.exerciseModel.isCircuit {
+        if viewModel.exerciseModel.isLastInCycle {
             durations.append(viewModel.exerciseModel.recoveryDuration)
         }
         

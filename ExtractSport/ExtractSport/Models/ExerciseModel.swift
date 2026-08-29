@@ -25,11 +25,11 @@ final class ExerciseModel {
     let setDuration: Int        // длительность одного подхода (сек)
     let recoveryDuration: Int   // отдых после подхода (сек)
     let setsCount: Int          // количество подходов
-    let isCircuit: Bool         // является ли циклической и нужно ли добавить отдых
+    let isLastInCycle: Bool     // является ли циклической и нужно ли добавить отдых
     let exerciseDuration: Int   // время выполнения всего уражнения
     var progress: Int = 0
 
-    init(id: UUID, index: Int, title: String, description: String, imageData: Data?, setDuration: Int, recoveryDuration: Int, setsCount: Int, isCircuit: Bool) {
+    init(id: UUID, index: Int, title: String, description: String, imageData: Data?, setDuration: Int, recoveryDuration: Int, setsCount: Int, isLastInCycle: Bool) {
         self.id = id
         self.index = index
         self.title = title
@@ -38,11 +38,8 @@ final class ExerciseModel {
         self.setDuration = setDuration
         self.recoveryDuration = recoveryDuration
         self.setsCount = setsCount
-        self.isCircuit = isCircuit
-        self.exerciseDuration = (setDuration + recoveryDuration) * setsCount + (isCircuit ? recoveryDuration : 0)
+        self.isLastInCycle = isLastInCycle
+        self.exerciseDuration = (setDuration + recoveryDuration) * setsCount + (isLastInCycle ? recoveryDuration : 0)
     }
 
-    func setAsDone() {
-        
-    }
 }

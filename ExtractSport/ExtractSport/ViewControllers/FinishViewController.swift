@@ -51,11 +51,12 @@ final class FinishViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        bindViewModel()
     }
     
     private func bindViewModel() {
         viewModel.onToMain = { [weak self] in
-            
+            self?.navigationController?.popToRootViewController(animated: true)
         }
     }
     

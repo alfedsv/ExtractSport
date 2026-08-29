@@ -82,7 +82,7 @@ final class WorkoutModel {
                 setDuration: exercisePlanModel.setDuration,
                 recoveryDuration: exercisePlanModel.recoveryDuration,
                 setsCount: exercisePlanModel.setsCount,
-                isCircuit: workoutType == .circuit
+                isLastInCycle: workoutType == .circuit && exercisePlanModel.isLastInCycle
             )
             models.append(model)
         }
