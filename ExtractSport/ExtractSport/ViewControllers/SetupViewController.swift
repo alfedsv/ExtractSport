@@ -17,8 +17,8 @@ final class SetupViewController: BaseViewController {
         slider.minimumValue = Float(WorkoutModelConstants.workoutDurationMin)
         slider.maximumValue = Float(WorkoutModelConstants.workoutDurationMax)
         slider.isContinuous = true
-        slider.minimumTrackTintColor = UIColor(named: "sliderActive")
-        slider.maximumTrackTintColor = UIColor(named: "sliderUnactive")
+        slider.minimumTrackTintColor = UIColor(named: AppConstants.Colors.sliderActive)
+        slider.maximumTrackTintColor = UIColor(named: AppConstants.Colors.sliderUnactive)
         return slider
     }()
 
@@ -27,45 +27,15 @@ final class SetupViewController: BaseViewController {
         slider.minimumValue = Float(WorkoutModelConstants.exercisesCountMin)
         slider.maximumValue = Float(WorkoutModelConstants.exercisesCountMax)
         slider.isContinuous = true
-        slider.minimumTrackTintColor = UIColor(named: "sliderActive")
-        slider.maximumTrackTintColor = UIColor(named: "sliderUnactive")
+        slider.minimumTrackTintColor = UIColor(named: AppConstants.Colors.sliderActive)
+        slider.maximumTrackTintColor = UIColor(named: AppConstants.Colors.sliderUnactive)
         return slider
     }()
 
-    private let durationTitleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "setupTitle.duration".localized
-        label.font = .systemFont(ofSize: 24)
-        label.textAlignment = .center
-        label.textColor = UIColor(named: "labelText")
-        return label
-    }()
-
-    private let exercisesTitleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "setupTitle.exercisesCount".localized
-        label.font = .systemFont(ofSize: 24)
-        label.textAlignment = .center
-        label.textColor = UIColor(named: "labelText")
-        return label
-    }()
-
-    private let durationValueLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 14)
-        label.textColor = UIColor(named: "labelText")
-        label.textAlignment = .left
-        return label
-    }()
-
-    private let exercisesValueLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 14)
-        label.textColor = UIColor(named: "labelText")
-        label.textAlignment = .left
-        return label
-    }()
-    
+    private let durationTitleLabel = MainTitleLabel(text: "setupTitle.duration".localized)
+    private let exercisesTitleLabel = MainTitleLabel(text: "setupTitle.exercisesCount".localized)
+    private let durationValueLabel = DescriptionLabel()
+    private let exercisesValueLabel = DescriptionLabel()
     private let recomendationView: RecomendationView
 
     private let nextButton = LargeButton(title: "largeButton.begin".localized)
@@ -185,10 +155,10 @@ extension SetupViewController {
             recomendationView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             recomendationView.bottomAnchor.constraint(equalTo: nextButton.topAnchor, constant: -50),
             
-            nextButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 45),
-            nextButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -45),
-            nextButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -25),
-            nextButton.heightAnchor.constraint(equalToConstant: 45)
+            nextButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: AppConstants.Layout.paddingLargeButton),
+            nextButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -AppConstants.Layout.paddingLargeButton),
+            nextButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -AppConstants.Layout.paddingLargeButtonBottom),
+            nextButton.heightAnchor.constraint(equalToConstant: AppConstants.Layout.buttonHeightStandard)
         ])
     }
 }

@@ -24,10 +24,10 @@ final class SetupButton: UIButton {
     }
     
     private func setupAppearance() {
-        layer.cornerRadius = 10
+        layer.cornerRadius = AppConstants.Layout.buttonCornerRadius
         setTitle(command.localizedTitle, for: .normal)
         titleLabel?.font = .systemFont(ofSize: 14, weight: .medium)
-        setTitleColor(UIColor(named: "buttonText"), for: .normal)
+        setTitleColor(UIColor(named: AppConstants.Colors.buttonText), for: .normal)
         updateBackgroundColor()
     }
 

@@ -13,14 +13,7 @@ final class WarmUpCoolDownViewController: BaseViewController {
     
     private let scrollView = UIScrollView()
     private let contentView = UIView()
-    private let titleLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 24)
-        label.textColor = UIColor(named: "labelText")
-        label.textAlignment = .center
-        label.numberOfLines = 1
-        return label
-    }()
+    private let titleLabel = MainTitleLabel()
     private let stackView = UIStackView()
     private let nextButton = LargeButton(title: "largeButton.next".localized)
     
@@ -156,10 +149,10 @@ extension WarmUpCoolDownViewController{
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5),
 
             nextButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 20),
-            nextButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 45),
-            nextButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -45),
-            nextButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -25),
-            nextButton.heightAnchor.constraint(equalToConstant: 45)
+            nextButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: AppConstants.Layout.paddingLargeButton),
+            nextButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -AppConstants.Layout.paddingLargeButton),
+            nextButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -AppConstants.Layout.paddingLargeButtonBottom),
+            nextButton.heightAnchor.constraint(equalToConstant: AppConstants.Layout.buttonHeightStandard)
         ])
     }
 }

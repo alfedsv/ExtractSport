@@ -122,7 +122,7 @@ final class StartViewController: BaseViewController {
 
         let titleLabel = UILabel()
         titleLabel.text = title
-        titleLabel.textColor = UIColor(named: "labelText")
+        titleLabel.textColor = UIColor(named: AppConstants.Colors.labelText)
         titleLabel.font = UIFont.systemFont(ofSize: 24)
         titleLabel.textAlignment = .center
         titleLabel.setContentHuggingPriority(.required, for: .vertical)
@@ -209,10 +209,10 @@ extension StartViewController {
             spacers.top.heightAnchor.constraint(equalTo: spacers.middle2.heightAnchor),
             spacers.top.heightAnchor.constraint(equalTo: spacers.bottom.heightAnchor),
             
-            nextButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 45),
-            nextButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -45),
-            nextButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -25),
-            nextButton.heightAnchor.constraint(equalToConstant: 45)
+            nextButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: AppConstants.Layout.paddingLargeButton),
+            nextButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -AppConstants.Layout.paddingLargeButton),
+            nextButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -AppConstants.Layout.paddingLargeButtonBottom),
+            nextButton.heightAnchor.constraint(equalToConstant: AppConstants.Layout.buttonHeightStandard)
         ])
     }
 }

@@ -13,88 +13,27 @@ final class ExerciseViewController: BaseViewController {
     
     private let scrollView = UIScrollView()
     private let contentView = UIView()
-    
-    private let titleExerciseLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 24)
-        label.textColor = UIColor(named: "labelText")
-        label.textAlignment = .center
-        label.numberOfLines = 1
-        return label
-    }()
+
+    private let titleExerciseLabel = MainTitleLabel()
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 4
-        imageView.backgroundColor = UIColor(named: "iconColor")
+        imageView.backgroundColor = UIColor(named: AppConstants.Colors.iconColor)
         return imageView
     }()
 
-    private let titleLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 16, weight: .semibold)
-        label.textColor = UIColor(named: "labelText")
-        label.numberOfLines = 0
-        return label
-    }()
-
-    private let descriptionLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 14)
-        label.textColor = UIColor(named: "labelText")
-        label.numberOfLines = 0
-        return label
-    }()
+    private let titleLabel = TitleLabel()
+    private let descriptionLabel = DescriptionLabel()
     
-    private let setsCountLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 14)
-        label.textColor = UIColor(named: "textRed")
-        label.numberOfLines = 1
-        return label
-    }()
-    
-    private let durationSetsLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 14)
-        label.textColor = UIColor(named: "textRed")
-        label.numberOfLines = 1
-        return label
-    }()
-    
-    private let durationRestLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 14)
-        label.textColor = UIColor(named: "textRed")
-        label.numberOfLines = 1
-        return label
-    }()
-    
-    private let setsCountNumberLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 14, weight: .semibold)
-        label.textColor = UIColor(named: "textRed")
-        label.numberOfLines = 1
-        return label
-    }()
-    
-    private let durationSetsNumberLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 14, weight: .semibold)
-        label.textColor = UIColor(named: "textRed")
-        label.numberOfLines = 1
-        return label
-    }()
-    
-    private let durationRestNumberLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 14, weight: .semibold)
-        label.textColor = UIColor(named: "textRed")
-        label.numberOfLines = 1
-        return label
-    }()
+    private let setsCountLabel = DescriptionExerciseLabel()
+    private let durationSetsLabel = DescriptionExerciseLabel()
+    private let durationRestLabel = DescriptionExerciseLabel()
+    private let setsCountNumberLabel = DescriptionExerciseLabel()
+    private let durationSetsNumberLabel = DescriptionExerciseLabel()
+    private let durationRestNumberLabel = DescriptionExerciseLabel()
     
     private let controlButton = ControlLargeButton()
     private var progressViews: [UIProgressView] = []
@@ -141,7 +80,7 @@ final class ExerciseViewController: BaseViewController {
         }
         
         viewModel.onStoped = { [weak self] in
-            self?.controlButton.currentState = .stoped
+            self?.controlButton.currentState = .stopped
         }
         
         viewModel.onEnded = { [weak self] in
@@ -196,17 +135,17 @@ final class ExerciseViewController: BaseViewController {
         contentView.addSubview(stackView)
 
         for _ in 0..<viewModel.exerciseModel.setsCount {
-            let (setContainer, setProgress) = createStepContainer(title: "Подход", progress: 0.0, tintColor: UIColor(named: "progressBarSet"))
+            let (setContainer, setProgress) = createStepContainer(title: "Подход", progress: 0.0, tintColor: UIColor(named: AppConstants.Colors.progressBarSet))
             stackView.addArrangedSubview(setContainer)
             progressViews.append(setProgress)
 
-            let (restContainer, restProgress) = createStepContainer(title: "Отдых", progress: 0.0, tintColor: UIColor(named: "progressBarRest"))
+            let (restContainer, restProgress) = createStepContainer(title: "Отдых", progress: 0.0, tintColor: UIColor(named: AppConstants.Colors.progressBarRest))
             stackView.addArrangedSubview(restContainer)
             progressViews.append(restProgress)
         }
 
         if viewModel.exerciseModel.isLastInCycle {
-            let (circuitContainer, circuitProgress) = createStepContainer(title: "Отдых", progress: 0.0, tintColor: UIColor(named: "progressBarRest"))
+            let (circuitContainer, circuitProgress) = createStepContainer(title: "Отдых", progress: 0.0, tintColor: UIColor(named: AppConstants.Colors.progressBarRest))
             stackView.addArrangedSubview(circuitContainer)
             progressViews.append(circuitProgress)
         }
@@ -227,7 +166,7 @@ final class ExerciseViewController: BaseViewController {
         let label = UILabel()
         label.text = title
         label.font = .systemFont(ofSize: 14)
-        label.textColor = UIColor(named: "labelText")
+        label.textColor = UIColor(named: AppConstants.Colors.labelText)
         label.setContentHuggingPriority(.required, for: .horizontal)
         label.setContentCompressionResistancePriority(.required, for: .horizontal)
         label.widthAnchor.constraint(equalToConstant: 55).isActive = true
@@ -324,7 +263,7 @@ extension ExerciseViewController {
             
             imageView.topAnchor.constraint(equalTo: titleExerciseLabel.bottomAnchor, constant: 25),
             imageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            imageView.heightAnchor.constraint(equalToConstant: 200),
+            imageView.heightAnchor.constraint(equalToConstant: AppConstants.Layout.imageLargeSide),
             imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor),
             
             titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 25),
@@ -366,10 +305,10 @@ extension ExerciseViewController {
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             
             nextButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 65),
-            nextButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 45),
-            nextButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -45),
-            nextButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -25),
-            nextButton.heightAnchor.constraint(equalToConstant: 45)
+            nextButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: AppConstants.Layout.paddingLargeButton),
+            nextButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -AppConstants.Layout.paddingLargeButton),
+            nextButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -AppConstants.Layout.paddingLargeButtonBottom),
+            nextButton.heightAnchor.constraint(equalToConstant: AppConstants.Layout.buttonHeightStandard)
         ])
 
     }

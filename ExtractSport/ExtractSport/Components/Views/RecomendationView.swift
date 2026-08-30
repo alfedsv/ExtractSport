@@ -12,7 +12,7 @@ final class RecomendationView: UIView {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
-        label.textColor = UIColor(named: "recomendationTitle")
+        label.textColor = UIColor(named: AppConstants.Colors.recomendationTitle)
         label.text = "recomendation.title".localized
         return label
     }()
@@ -20,17 +20,17 @@ final class RecomendationView: UIView {
     private let textLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
-        label.textColor = UIColor(named: "labelText")
+        label.textColor = UIColor(named: AppConstants.Colors.labelText)
         label.numberOfLines = 3
         return label
     }()
     
     init(workoutType: WorkoutType) {
         super.init(frame: .zero)
-        layer.cornerRadius = 10
+        layer.cornerRadius = AppConstants.Layout.recomendationViewCornerRadius
         addSubview(titleLabel)
         addSubview(textLabel)
-        backgroundColor = UIColor(named: "recomendationBackground")
+        backgroundColor = UIColor(named: AppConstants.Colors.recomendationBackground)
         switch workoutType {
         case .strength:
             textLabel.text = "recomendation.strength".localized

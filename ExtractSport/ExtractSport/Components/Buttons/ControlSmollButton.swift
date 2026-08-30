@@ -9,7 +9,7 @@ import UIKit
 
 final class ControlSmollButton: UIButton {
 
-    var currentState: WarmUpCoolDownModel.CurrentState = .begin {
+    var currentState: CurrentState = .begin {
         didSet {
             updateUI()
         }
@@ -24,8 +24,8 @@ final class ControlSmollButton: UIButton {
     init() {
         super.init(frame: .zero)
         titleLabel?.font = .systemFont(ofSize: 14)
-        setTitleColor(UIColor(named: "Buttons/text"), for: .normal)
-        layer.cornerRadius = 10
+        setTitleColor(UIColor(named: AppConstants.Colors.buttonText), for: .normal)
+        layer.cornerRadius = AppConstants.Layout.buttonCornerRadius
         updateUI()
     }
     
@@ -35,7 +35,7 @@ final class ControlSmollButton: UIButton {
     
     private func updateUI() {
         if isLocked {
-            backgroundColor = UIColor(named: "Buttons/unactive")
+            backgroundColor = UIColor(named: AppConstants.Colors.buttonUnactive)
             isUserInteractionEnabled = false
             isHidden = false
         } else {
@@ -46,17 +46,17 @@ final class ControlSmollButton: UIButton {
                 isHidden = true
             case .begin:
                 setTitle("controlButton.start".localized, for: .normal)
-                backgroundColor = UIColor(named: "Buttons/active")
+                backgroundColor = UIColor(named: AppConstants.Colors.buttonActive)
                 isUserInteractionEnabled = true
                 isHidden = false
             case .ended:
                 setTitle("controlButton.onceMore".localized, for: .normal)
-                backgroundColor = UIColor(named: "Buttons/onceMore")
+                backgroundColor = UIColor(named: AppConstants.Colors.buttonOnceMore)
                 isUserInteractionEnabled = true
                 isHidden = false
-            case .stoped:
+            case .stopped:
                 setTitle("controlButton.start".localized, for: .normal)
-                backgroundColor = UIColor(named: "Buttons/active")
+                backgroundColor = UIColor(named: AppConstants.Colors.buttonActive)
                 isUserInteractionEnabled = true
                 isHidden = false
             }

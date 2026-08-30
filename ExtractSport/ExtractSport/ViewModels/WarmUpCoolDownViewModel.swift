@@ -102,7 +102,7 @@ final class WarmUpCoolDownViewModel: WarmUpCoolDownViewModelProtocol {
     func back() {
         if controllerType == .coolDown {
             for itemViewModel in self.itemViewModels {
-                itemViewModel.model.currentState = .stoped
+                itemViewModel.model.currentState = .stopped
             }
         }
     }

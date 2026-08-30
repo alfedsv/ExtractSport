@@ -13,32 +13,20 @@ final class WarmUpCoolDownView: UIView {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 4
-        imageView.backgroundColor = UIColor(named: "iconColor")
+        imageView.layer.cornerRadius = AppConstants.Layout.imageCornerRadius
+        imageView.backgroundColor = UIColor(named: AppConstants.Colors.iconColor)
         return imageView
     }()
 
-    private let titleLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 16, weight: .semibold)
-        label.textColor = UIColor(named: "labelText")
-        return label
-    }()
-
-    private let descriptionLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 14)
-        label.textColor = UIColor(named: "labelText")
-        label.numberOfLines = 0
-        return label
-    }()
-
+    private let titleLabel = TitleLabel()
+    private let descriptionLabel = DescriptionLabel()
     private let progressView = UIProgressView(progressViewStyle: .default)
     private let button = ControlSmollButton()
+
     private let timerLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 20)
-        label.textColor = UIColor(named: "labelText")
+        label.textColor = UIColor(named: AppConstants.Colors.labelText)
         label.isHidden = true
         label.textAlignment = .center
         label.text = "MM:SS"
@@ -70,10 +58,9 @@ final class WarmUpCoolDownView: UIView {
     }
 
     private func setupUI() {
-        backgroundColor = .systemBackground
         layer.cornerRadius = 8
         layer.borderWidth = 0.5
-        layer.borderColor = UIColor(named: "border")?.cgColor
+        layer.borderColor = UIColor(named: AppConstants.Colors.border)?.cgColor
         
         addSubview(imageView)
         addSubview(titleLabel)
@@ -84,7 +71,7 @@ final class WarmUpCoolDownView: UIView {
 
         titleLabel.text = viewModel.model.title
         descriptionLabel.text = viewModel.model.description
-        progressView.progressTintColor = UIColor(named: "progressBar")
+        progressView.progressTintColor = UIColor(named: AppConstants.Colors.progressBarSet)
         button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         button.currentState = viewModel.model.currentState
 
@@ -129,9 +116,9 @@ extension WarmUpCoolDownView{
         NSLayoutConstraint.activate([
             imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
             imageView.topAnchor.constraint(equalTo: topAnchor, constant: 12),
-            imageView.widthAnchor.constraint(equalToConstant: 100),
+            imageView.widthAnchor.constraint(equalToConstant: AppConstants.Layout.imageSmallSide),
             imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor),
-             
+
             titleLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 12),
             titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 12),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),

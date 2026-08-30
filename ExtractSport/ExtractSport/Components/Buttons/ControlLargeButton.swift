@@ -9,7 +9,7 @@ import UIKit
 
 final class ControlLargeButton: UIButton {
 
-    var currentState: ExerciseModel.CurrentState = .begin {
+    var currentState: CurrentState = .begin {
         didSet {
             updateUI()
         }
@@ -18,8 +18,8 @@ final class ControlLargeButton: UIButton {
     init() {
         super.init(frame: .zero)
         titleLabel?.font = .systemFont(ofSize: 14)
-        setTitleColor(UIColor(named: "Buttons/text"), for: .normal)
-        layer.cornerRadius = 10
+        setTitleColor(UIColor(named: AppConstants.Colors.buttonText), for: .normal)
+        layer.cornerRadius = AppConstants.Layout.buttonCornerRadius
         updateUI()
     }
 
@@ -31,19 +31,19 @@ final class ControlLargeButton: UIButton {
         switch currentState {
         case .running:
             setTitle("controlButton.stop".localized, for: .normal)
-            backgroundColor = UIColor(named: "Buttons/unactive")
+            backgroundColor = UIColor(named: AppConstants.Colors.buttonUnactive)
             isUserInteractionEnabled = true
         case .begin:
             setTitle("controlButton.start".localized, for: .normal)
-            backgroundColor = UIColor(named: "Buttons/active")
+            backgroundColor = UIColor(named: AppConstants.Colors.buttonActive)
             isUserInteractionEnabled = true
         case .ended:
             setTitle("controlButton.finished".localized, for: .normal)
-            backgroundColor = UIColor(named: "Buttons/unactive")
+            backgroundColor = UIColor(named: AppConstants.Colors.buttonUnactive)
             isUserInteractionEnabled = false
-        case .stoped:
+        case .stopped:
             setTitle("controlButton.start".localized, for: .normal)
-            backgroundColor = UIColor(named: "Buttons/active")
+            backgroundColor = UIColor(named: AppConstants.Colors.buttonActive)
             isUserInteractionEnabled = true
         }
     }

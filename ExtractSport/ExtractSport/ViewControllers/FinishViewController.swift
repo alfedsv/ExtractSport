@@ -11,14 +11,7 @@ final class FinishViewController: BaseViewController {
 
     private let viewModel: FinishViewModelProtocol
     
-    private let titleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "finish.title".localized
-        label.font = .systemFont(ofSize: 24)
-        label.textAlignment = .center
-        label.textColor = UIColor(named: "labelText")
-        return label
-    }()
+    private let titleLabel = MainTitleLabel(text: "finish.title".localized)
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
@@ -32,7 +25,7 @@ final class FinishViewController: BaseViewController {
     private let winLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 20)
-        label.textColor = UIColor(named: "textRed")
+        label.textColor = UIColor(named: AppConstants.Colors.textRed)
         label.textAlignment = .center
         return label
     }()
@@ -102,10 +95,10 @@ extension FinishViewController {
             winLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -35),
             winLabel.bottomAnchor.constraint(equalTo: toMainButton.bottomAnchor, constant: -100),
             
-            toMainButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 45),
-            toMainButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -45),
-            toMainButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -25),
-            toMainButton.heightAnchor.constraint(equalToConstant: 45)
+            toMainButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: AppConstants.Layout.paddingLargeButton),
+            toMainButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -AppConstants.Layout.paddingLargeButton),
+            toMainButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -AppConstants.Layout.paddingLargeButtonBottom),
+            toMainButton.heightAnchor.constraint(equalToConstant: AppConstants.Layout.buttonHeightStandard)
         ])
     }
 }

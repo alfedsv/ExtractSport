@@ -50,10 +50,10 @@ final class ExerciseViewModel: ExerciseViewModelProtocol {
     deinit {
         switch exerciseModel.currentState {
         case .running:
-            exerciseModel.currentState = .stoped
+            exerciseModel.currentState = .stopped
             stopTimer()
             onStoped?()
-        case .begin, .ended, .stoped:
+        case .begin, .ended, .stopped:
             break
         }
         stopTimer()
@@ -84,19 +84,15 @@ final class ExerciseViewModel: ExerciseViewModelProtocol {
     func control() {
         switch exerciseModel.currentState {
         case .running:
-            exerciseModel.currentState = .stoped
+            exerciseModel.currentState = .stopped
             stopTimer()
             onStoped?()
-        case .begin:
+        case .begin, .stopped:
             exerciseModel.currentState = .running
             startTimer()
             onStarted?()
         case .ended:
             break
-        case .stoped:
-            exerciseModel.currentState = .running
-            startTimer()
-            onStarted?()
         }
     }
 
@@ -121,7 +117,7 @@ final class ExerciseViewModel: ExerciseViewModelProtocol {
     
     private func navigation() {
         if exerciseModel.currentState == .running {
-            exerciseModel.currentState = .stoped
+            exerciseModel.currentState = .stopped
             stopTimer()
             onStoped?()
         }

@@ -9,13 +9,6 @@ import Foundation
 
 final class ExerciseModel {
 
-    enum CurrentState {
-        case running    // в ходе выполнения
-        case begin      // в начале
-        case ended      // закончено
-        case stoped     // приостановлено
-    }
-
     let id: UUID
     let index: Int
     let title: String

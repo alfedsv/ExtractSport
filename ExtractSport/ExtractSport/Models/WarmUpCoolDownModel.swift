@@ -9,13 +9,6 @@ import Foundation
 
 final class WarmUpCoolDownModel {
     
-    enum CurrentState {
-        case running
-        case begin
-        case ended
-        case stoped
-    }
-    
     let id: UUID
     let imageData: Data?
     let title: String
