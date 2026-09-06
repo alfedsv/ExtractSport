@@ -48,6 +48,8 @@ final class SetupViewModel: SetupViewModelProtocol {
     }
 
     func next() {
+        let test = Workout()
+        test.getExercises(targetArea: targetArea, workoutType: workoutType, equipment: equipment)
         if exercisesCount > 0 {
             let workoutModel = WorkoutModel(
                 targetArea: targetArea,

@@ -6,7 +6,18 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXContainerItemProxy section */
+		D07992DD3045B07800CF5C22 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D0E2FAC6303D571C0062712A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D0E2FACD303D571C0062712A;
+			remoteInfo = ExtractSport;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		D07992D93045B07800CF5C22 /* ExtractSportTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExtractSportTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0E2FACE303D571C0062712A /* ExtractSport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExtractSport.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -21,6 +32,11 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		D07992DA3045B07800CF5C22 /* ExtractSportTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ExtractSportTests;
+			sourceTree = "<group>";
+		};
 		D0E2FAD0303D571C0062712A /* ExtractSport */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
@@ -32,6 +48,13 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		D07992D63045B07800CF5C22 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D0E2FACB303D571C0062712A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -46,6 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				D0E2FAD0303D571C0062712A /* ExtractSport */,
+				D07992DA3045B07800CF5C22 /* ExtractSportTests */,
 				D0E2FACF303D571C0062712A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				D0E2FACE303D571C0062712A /* ExtractSport.app */,
+				D07992D93045B07800CF5C22 /* ExtractSportTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -61,6 +86,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		D07992D83045B07800CF5C22 /* ExtractSportTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D07992DF3045B07800CF5C22 /* Build configuration list for PBXNativeTarget "ExtractSportTests" */;
+			buildPhases = (
+				D07992D53045B07800CF5C22 /* Sources */,
+				D07992D63045B07800CF5C22 /* Frameworks */,
+				D07992D73045B07800CF5C22 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D07992DE3045B07800CF5C22 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				D07992DA3045B07800CF5C22 /* ExtractSportTests */,
+			);
+			name = ExtractSportTests;
+			packageProductDependencies = (
+			);
+			productName = ExtractSportTests;
+			productReference = D07992D93045B07800CF5C22 /* ExtractSportTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		D0E2FACD303D571C0062712A /* ExtractSport */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D0E2FAE4303D571F0062712A /* Build configuration list for PBXNativeTarget "ExtractSport" */;
@@ -93,6 +141,10 @@
 				LastSwiftUpdateCheck = 2620;
 				LastUpgradeCheck = 2620;
 				TargetAttributes = {
+					D07992D83045B07800CF5C22 = {
+						CreatedOnToolsVersion = 26.2;
+						TestTargetID = D0E2FACD303D571C0062712A;
+					};
 					D0E2FACD303D571C0062712A = {
 						CreatedOnToolsVersion = 26.2;
 					};
@@ -113,11 +165,19 @@
 			projectRoot = "";
 			targets = (
 				D0E2FACD303D571C0062712A /* ExtractSport */,
+				D07992D83045B07800CF5C22 /* ExtractSportTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		D07992D73045B07800CF5C22 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D0E2FACC303D571C0062712A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -128,6 +188,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		D07992D53045B07800CF5C22 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D0E2FACA303D571C0062712A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -137,7 +204,57 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		D07992DE3045B07800CF5C22 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D0E2FACD303D571C0062712A /* ExtractSport */;
+			targetProxy = D07992DD3045B07800CF5C22 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		D07992E03045B07800CF5C22 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6864P4M57B;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = alex.Extract2.ExtractSportTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ExtractSport.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ExtractSport";
+			};
+			name = Debug;
+		};
+		D07992E13045B07800CF5C22 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6864P4M57B;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = alex.Extract2.ExtractSportTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ExtractSport.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ExtractSport";
+			};
+			name = Release;
+		};
 		D0E2FAE5303D571F0062712A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -342,6 +459,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D07992DF3045B07800CF5C22 /* Build configuration list for PBXNativeTarget "ExtractSportTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D07992E03045B07800CF5C22 /* Debug */,
+				D07992E13045B07800CF5C22 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D0E2FAC9303D571C0062712A /* Build configuration list for PBXProject "ExtractSport" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

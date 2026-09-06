@@ -70,7 +70,7 @@ final class WorkoutHelper {
                 let setDuration = randomSetDuration(workoutType: workoutType)   // длительность подхода
                 let recoveryDuration = recoveryDuration(workoutType: workoutType, setDuration: setDuration)
                 let setsCount = timePerExercise / (setDuration + recoveryDuration)
-                let isLast = (exerciseIndex == userExercisesCount - 1)
+                let isLast = (exerciseIndex % userExercisesCount == userExercisesCount - 1)
                 print("\tКоличество походов:\t\(setsCount)")
                 print("\tВремя на все упраженение:\t\(timePerExercise)")
                 print("\tВремя на один подход:\t\(setDuration)")
