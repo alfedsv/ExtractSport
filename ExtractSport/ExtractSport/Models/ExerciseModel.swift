@@ -13,7 +13,7 @@ final class ExerciseModel {
     let index: Int
     let title: String
     let description: String
-    let imageData: Data?
+    let imageName: String?
     var currentState: CurrentState = .begin
     let setDuration: Int        // длительность одного подхода (сек)
     let recoveryDuration: Int   // отдых после подхода (сек)
@@ -22,12 +22,12 @@ final class ExerciseModel {
     let exerciseDuration: Int   // время выполнения всего уражнения
     var progress: Int = 0
 
-    init(id: UUID, index: Int, title: String, description: String, imageData: Data?, setDuration: Int, recoveryDuration: Int, setsCount: Int, isLastInCycle: Bool) {
+    init(id: UUID, index: Int, title: String, description: String, imageName: String?, setDuration: Int, recoveryDuration: Int, setsCount: Int, isLastInCycle: Bool) {
         self.id = id
         self.index = index
         self.title = title
         self.description = description
-        self.imageData = imageData
+        self.imageName = imageName
         self.setDuration = setDuration
         self.recoveryDuration = recoveryDuration
         self.setsCount = setsCount

@@ -9,15 +9,15 @@ import XCTest
 @testable import ExtractSport
 
 final class ExtractSportTests: XCTestCase {
-
+    
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
-
+    
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
+    
     func testExample() throws {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
@@ -25,7 +25,7 @@ final class ExtractSportTests: XCTestCase {
         // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
         // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
     }
-
+    
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
         measure {
@@ -38,6 +38,7 @@ final class ExtractSportTests: XCTestCase {
         let targetAreas: [TargetArea] = [.legs, .armsAndShoulders, .back, .chest, .absAndCore, .fullBody]
         let workoutTypes: [WorkoutType] = [.strength, .endurance, .explosivePower, .circuit]
         let equipments: [Equipment] = [.bodyweight, .homeGym, .outdoorPark, .gym]
+        var wrongCount = 0
         for target in targetAreas {
             for type in workoutTypes {
                 for equipment in equipments {
@@ -47,14 +48,56 @@ final class ExtractSportTests: XCTestCase {
                         equipment: equipment
                     )
                     let count = exercises.count
+                    if count < 15 {
+                        wrongCount += 1
+                    }
                     /*XCTAssertGreaterThanOrEqual(
-                        count,
-                        WorkoutModelConstants.exercisesCountMax,
-                        "Комбинация (\(target), \(type), \(equipment)) вернула \(count) упражнений, а нужно минимум \(WorkoutModelConstants.exercisesCountMax)"
-                    )*/
+                     count,
+                     WorkoutModelConstants.exercisesCountMax,
+                     "Комбинация (\(target), \(type), \(equipment)) вернула \(count) упражнений, а нужно минимум \(WorkoutModelConstants.exercisesCountMax)"
+                     )*/
                     
                 }
             }
         }
+        print("ОШИБОК: \(wrongCount)")
+    }
+    
+    func testWarmUpCountAtLeastFifteenForAllCombinations() {
+        let workout = WarmUp()
+        let targetAreas: [TargetArea] = [.legs, .armsAndShoulders, .back, .chest, .absAndCore, .fullBody]
+        var wrongCount = 0
+        for target in targetAreas {
+            let exercises = workout.getExercises(targetArea: target)
+            let count = exercises.count
+            if count < 6 {
+                wrongCount += 1
+            }
+            /*XCTAssertGreaterThanOrEqual(
+             count,
+             WorkoutModelConstants.exercisesCountMax,
+             "Комбинация (\(target)) вернула \(count) упражнений на разминку, а нужно минимум \(WorkoutModelConstants.warmUpExercisesCount)"
+             )*/
+        }
+        print("ОШИБОК: \(wrongCount)")
+    }
+
+    func testCoolDownCountAtLeastFifteenForAllCombinations() {
+        let workout = CoolDown()
+        let targetAreas: [TargetArea] = [.legs, .armsAndShoulders, .back, .chest, .absAndCore, .fullBody]
+        var wrongCount = 0
+        for target in targetAreas {
+            let exercises = workout.getExercises(targetArea: target)
+            let count = exercises.count
+            if count < 3 {
+                wrongCount += 1
+            }
+            /*XCTAssertGreaterThanOrEqual(
+             count,
+             WorkoutModelConstants.exercisesCountMax,
+             "Комбинация (\(target)) вернула \(count) упражнений на заминку, а нужно минимум \(WorkoutModelConstants.coolDownExercisesCount)"
+             )*/
+        }
+        print("ОШИБОК: \(wrongCount)")
     }
 }

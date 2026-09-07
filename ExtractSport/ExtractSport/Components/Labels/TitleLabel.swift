@@ -21,6 +21,6 @@ final class TitleLabel: UILabel {
     private func setupUI() {
         font = .systemFont(ofSize: 16, weight: .semibold)
         textColor = UIColor(named: AppConstants.Colors.labelText)
-        numberOfLines = 1
+        numberOfLines = 0
     }
 }

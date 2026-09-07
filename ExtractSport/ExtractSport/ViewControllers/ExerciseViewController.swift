@@ -114,6 +114,8 @@ final class ExerciseViewController: BaseViewController {
         contentView.addSubview(durationRestLabel)
         contentView.addSubview(durationRestNumberLabel)
         
+        // imageView.image = UIImage(named: viewModel.exerciseModel.imageName ?? "placeholder")
+        imageView.image = UIImage(named: "placeholder")
         titleLabel.text = viewModel.exerciseModel.title
         descriptionLabel.text = viewModel.exerciseModel.description
         setsCountLabel.text = "exercise.setsCount".localized

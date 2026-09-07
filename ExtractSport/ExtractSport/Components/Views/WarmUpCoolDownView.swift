@@ -63,6 +63,8 @@ final class WarmUpCoolDownView: UIView {
         layer.borderColor = UIColor(named: AppConstants.Colors.border)?.cgColor
         
         addSubview(imageView)
+        // imageView.image = UIImage(named: viewModel.model.imageName ?? "placeholder")
+        imageView.image = UIImage(named: "placeholder")
         addSubview(titleLabel)
         addSubview(descriptionLabel)
         addSubview(progressView)

@@ -10,7 +10,7 @@ import Foundation
 final class WarmUpCoolDownModel {
     
     let id: UUID
-    let imageData: Data?
+    let imageName: String?
     let title: String
     let description: String
     var progress: Int = 0
@@ -18,9 +18,9 @@ final class WarmUpCoolDownModel {
     var currentState: CurrentState = .begin
     var isLocked: Bool = false
     
-    init(id: UUID, imageData: Data?, title: String, description: String, duration: Int) {
+    init(id: UUID, imageName: String?, title: String, description: String, duration: Int) {
         self.id = id
-        self.imageData = imageData
+        self.imageName = imageName
         self.title = title
         self.description = description
         self.duration = duration
