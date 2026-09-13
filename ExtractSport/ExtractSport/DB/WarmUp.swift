@@ -25,12 +25,6 @@ struct WarmUp {
     }
     
     func getExercises(targetArea: TargetArea) -> [Exercise] {
-        let ex: [Exercise] = exercises.filter { exercise in
-            exercise.targetAreas.contains(targetArea)
-        }
-        
-        let status: String = (ex.count >= WorkoutModelConstants.warmUpExercisesCount ? "✅" : "❌")
-        print("\(status) Упражений на разминку = \(ex.count) \t[targetArea: \(targetArea)]")
         return exercises.filter { exercise in
             exercise.targetAreas.contains(targetArea)
         }

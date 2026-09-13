@@ -38,7 +38,6 @@ final class ExtractSportTests: XCTestCase {
         let targetAreas: [TargetArea] = [.legs, .armsAndShoulders, .back, .chest, .absAndCore, .fullBody]
         let workoutTypes: [WorkoutType] = [.strength, .endurance, .explosivePower, .circuit]
         let equipments: [Equipment] = [.bodyweight, .homeGym, .outdoorPark, .gym]
-        var wrongCount = 0
         for target in targetAreas {
             for type in workoutTypes {
                 for equipment in equipments {
@@ -48,56 +47,42 @@ final class ExtractSportTests: XCTestCase {
                         equipment: equipment
                     )
                     let count = exercises.count
-                    if count < 15 {
-                        wrongCount += 1
-                    }
-                    /*XCTAssertGreaterThanOrEqual(
-                     count,
-                     WorkoutModelConstants.exercisesCountMax,
-                     "Комбинация (\(target), \(type), \(equipment)) вернула \(count) упражнений, а нужно минимум \(WorkoutModelConstants.exercisesCountMax)"
-                     )*/
+                    XCTAssertGreaterThanOrEqual(
+                        count,
+                        WorkoutModelConstants.exercisesCountMax,
+                        "Комбинация (\(target), \(type), \(equipment)) вернула \(count) упражнений, а нужно минимум \(WorkoutModelConstants.exercisesCountMax)"
+                     )
                     
                 }
             }
         }
-        print("ОШИБОК: \(wrongCount)")
     }
     
     func testWarmUpCountAtLeastFifteenForAllCombinations() {
         let workout = WarmUp()
         let targetAreas: [TargetArea] = [.legs, .armsAndShoulders, .back, .chest, .absAndCore, .fullBody]
-        var wrongCount = 0
         for target in targetAreas {
             let exercises = workout.getExercises(targetArea: target)
             let count = exercises.count
-            if count < 6 {
-                wrongCount += 1
-            }
-            /*XCTAssertGreaterThanOrEqual(
-             count,
-             WorkoutModelConstants.exercisesCountMax,
-             "Комбинация (\(target)) вернула \(count) упражнений на разминку, а нужно минимум \(WorkoutModelConstants.warmUpExercisesCount)"
-             )*/
+            XCTAssertGreaterThanOrEqual(
+                count,
+                WorkoutModelConstants.warmUpExercisesCount,
+                "Комбинация (\(target)) вернула \(count) упражнений на разминку, а нужно минимум \(WorkoutModelConstants.warmUpExercisesCount)"
+             )
         }
-        print("ОШИБОК: \(wrongCount)")
     }
 
     func testCoolDownCountAtLeastFifteenForAllCombinations() {
         let workout = CoolDown()
         let targetAreas: [TargetArea] = [.legs, .armsAndShoulders, .back, .chest, .absAndCore, .fullBody]
-        var wrongCount = 0
         for target in targetAreas {
             let exercises = workout.getExercises(targetArea: target)
             let count = exercises.count
-            if count < 3 {
-                wrongCount += 1
-            }
-            /*XCTAssertGreaterThanOrEqual(
-             count,
-             WorkoutModelConstants.exercisesCountMax,
-             "Комбинация (\(target)) вернула \(count) упражнений на заминку, а нужно минимум \(WorkoutModelConstants.coolDownExercisesCount)"
-             )*/
+            XCTAssertGreaterThanOrEqual(
+                count,
+                WorkoutModelConstants.coolDownExercisesCount,
+                "Комбинация (\(target)) вернула \(count) упражнений на заминку, а нужно минимум \(WorkoutModelConstants.coolDownExercisesCount)"
+             )
         }
-        print("ОШИБОК: \(wrongCount)")
     }
 }

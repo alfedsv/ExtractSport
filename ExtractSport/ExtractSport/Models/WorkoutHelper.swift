@@ -19,15 +19,15 @@ final class WorkoutHelper {
     private let warmUpDuration: Int = 4 * 60      // 4 мин
     private let coolDownDuration: Int = 3 * 60    // 3 мин
 
-    let totalDuration: Int          // общая длительность тренировки (сек)
-    let userExercisesCount: Int     // количество упражнений, выбранное пользователем
-    let workoutType: WorkoutType    // тип тренировки
+    private let totalDuration: Int          // общая длительность тренировки (сек)
+    private let userExercisesCount: Int     // количество упражнений, выбранное пользователем
+    private let workoutType: WorkoutType    // тип тренировки
     
-    var mainWorkoutTime: Int {
+    private var mainWorkoutTime: Int {
         return totalDuration - warmUpDuration - coolDownDuration
     }
     
-    var restBetweenSets: Int {
+    private var restBetweenSets: Int {
         switch workoutType {
         case .strength: return 60
         case .endurance: return 30
@@ -36,23 +36,23 @@ final class WorkoutHelper {
         }
     }
     
-    var restBetweenCycles: Int {
+    private var restBetweenCycles: Int {
         return workoutType == .circuit ? 60 : 0
     }
     
-    let cyclesCount: Int
+    private let cyclesCount: Int
     
-    var totalExercisesCount: Int {
+    private var totalExercisesCount: Int {
         return userExercisesCount * cyclesCount
     }
     
-    var timePerExercise: Int {
+    private var timePerExercise: Int {
         // (mainWorkoutTime - отдых между кругами) / общее количество упражнений
         let available = mainWorkoutTime - ((cyclesCount - 1) * restBetweenCycles)
         return available / totalExercisesCount   // целочисленное деление (округление вниз)
     }
     
-    var exercisePlans: [ExercisePlanModel] {
+    private var exercisePlans: [ExercisePlanModel] {
         var plan: [ExercisePlanModel] = []
         print("Создан план тренировки (\(workoutType)):")
         print("Зона проработки: \(workoutType)")
