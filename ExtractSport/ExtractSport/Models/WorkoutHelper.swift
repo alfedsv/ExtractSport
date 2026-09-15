@@ -99,7 +99,8 @@ final class WorkoutHelper {
                 imageName: exercise.image,
                 title: exercise.name,
                 description: exercise.description,
-                duration: WorkoutModelConstants.warmUpDuration
+                duration: WorkoutModelConstants.warmUpDuration,
+                targetArea: targetArea
             )
             models.append(model)
         }
@@ -117,7 +118,8 @@ final class WorkoutHelper {
                 imageName: exercise.image,
                 title: exercise.name,
                 description: exercise.description,
-                duration: WorkoutModelConstants.coolDownDuration
+                duration: WorkoutModelConstants.coolDownDuration,
+                targetArea: targetArea
             )
             models.append(model)
         }
