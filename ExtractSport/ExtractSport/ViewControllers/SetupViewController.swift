@@ -38,7 +38,18 @@ final class SetupViewController: BaseViewController {
     private let exercisesValueLabel = DescriptionLabel()
     private let recomendationView: RecomendationView
 
-    private let nextButton = LargeButton(title: "largeButton.begin".localized)
+    private let nextButton = LargeButton(title: "largeButton.begin".localized, isActive: true)
+    private let versionLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 12)
+        label.textColor = UIColor(named: AppConstants.Colors.labelText)
+        label.numberOfLines = 1
+        label.textAlignment = .center
+        let version = Bundle.main.appVersion
+        let build = Bundle.main.appBuild
+        label.text = "version".localized + " \(version) (\(build))"
+        return label
+    }()
 
     init(targetArea: TargetArea, workoutType: WorkoutType, equipment: Equipment) {
         self.viewModel = SetupViewModel(targetArea: targetArea, workoutType: workoutType, equipment: equipment)
@@ -73,19 +84,15 @@ final class SetupViewController: BaseViewController {
         durationSlider.addTarget(self, action: #selector(sliderValueChanged(_:)), for: .valueChanged)
         exercisesSlider.addTarget(self, action: #selector(sliderValueChanged(_:)), for: .valueChanged)
         nextButton.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
-
-        [
-            durationTitleLabel,
-            durationSlider,
-            durationValueLabel,
-            exercisesTitleLabel,
-            exercisesSlider,
-            exercisesValueLabel,
-            nextButton,
-            recomendationView
-        ].forEach {
-            view.addSubview($0)
-        }
+        view.addSubview(durationTitleLabel)
+        view.addSubview(durationSlider)
+        view.addSubview(durationValueLabel)
+        view.addSubview(exercisesTitleLabel)
+        view.addSubview(exercisesSlider)
+        view.addSubview(exercisesValueLabel)
+        view.addSubview(nextButton)
+        view.addSubview(recomendationView)
+        view.addSubview(versionLabel)
     }
 
     private func setupValues() {
@@ -123,7 +130,8 @@ extension SetupViewController {
             exercisesValueLabel,
             nextButton,
             recomendationView,
-            nextButton
+            nextButton,
+            versionLabel
         ].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -158,7 +166,10 @@ extension SetupViewController {
             nextButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: AppConstants.Layout.paddingLargeButton),
             nextButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -AppConstants.Layout.paddingLargeButton),
             nextButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -AppConstants.Layout.paddingLargeButtonBottom),
-            nextButton.heightAnchor.constraint(equalToConstant: AppConstants.Layout.buttonHeightStandard)
+            nextButton.heightAnchor.constraint(equalToConstant: AppConstants.Layout.buttonHeightStandard),
+            
+            versionLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -2),
+            versionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }
 }

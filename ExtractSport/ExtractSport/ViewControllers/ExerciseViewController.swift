@@ -46,7 +46,7 @@ final class ExerciseViewController: BaseViewController {
         return stackView
     }()
 
-    private let nextButton = LargeButton(title: "largeButton.next".localized)
+    private let nextButton = LargeButton(title: "largeButton.next".localized, isActive: true)
     
     init(workoutModel: WorkoutModel) {
         self.viewModel = ExerciseViewModel(workoutModel: workoutModel)

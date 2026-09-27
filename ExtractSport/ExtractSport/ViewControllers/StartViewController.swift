@@ -18,6 +18,17 @@ final class StartViewController: BaseViewController {
     private var targetAreaButtons: [SetupButton] = []
     private var workoutTypeButtons: [SetupButton] = []
     private var equipmentButtons: [SetupButton] = []
+    private let versionLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 12)
+        label.textColor = UIColor(named: AppConstants.Colors.labelText)
+        label.numberOfLines = 1
+        label.textAlignment = .center
+        let version = Bundle.main.appVersion
+        let build = Bundle.main.appBuild
+        label.text = "version".localized + " \(version) (\(build))"
+        return label
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +61,7 @@ final class StartViewController: BaseViewController {
         view.addSubview(mainStack)
         let nextButton = makeNextButton()
         view.addSubview(nextButton)
+        view.addSubview(versionLabel)
         setupConstraints(mainStack: mainStack, nextButton: nextButton, spacers: spacers)
     }
     
@@ -107,7 +119,7 @@ final class StartViewController: BaseViewController {
     }
     
     private func makeNextButton() -> UIButton {
-        let button = LargeButton(title: "largeButton.next".localized)
+        let button = LargeButton(title: "largeButton.next".localized, isActive: true)
         button.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
         return button
     }
@@ -198,6 +210,7 @@ final class StartViewController: BaseViewController {
 extension StartViewController {
     private func setupConstraints(mainStack: UIStackView, nextButton: UIButton, spacers: (top: UIView, middle1: UIView, middle2: UIView, bottom: UIView)) {
         nextButton.translatesAutoresizingMaskIntoConstraints = false
+        versionLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             mainStack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
@@ -212,7 +225,10 @@ extension StartViewController {
             nextButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: AppConstants.Layout.paddingLargeButton),
             nextButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -AppConstants.Layout.paddingLargeButton),
             nextButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -AppConstants.Layout.paddingLargeButtonBottom),
-            nextButton.heightAnchor.constraint(equalToConstant: AppConstants.Layout.buttonHeightStandard)
+            nextButton.heightAnchor.constraint(equalToConstant: AppConstants.Layout.buttonHeightStandard),
+
+            versionLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -2),
+            versionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }
 }

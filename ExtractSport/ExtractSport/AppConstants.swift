@@ -21,6 +21,8 @@ enum AppConstants {
         
         static let imageSmallSide: CGFloat = 100                // WarmUpCoolDownView
         static let imageLargeSide: CGFloat = 200                // ExerciseViewController
+
+        static let checkboxButtonSide: CGFloat = 32
     }
     
     enum Colors {
@@ -45,6 +47,7 @@ enum AppConstants {
         static let setupButtonBackgroundWorkoutTypeUnactive = "SetupButtonBackground/WorkoutType/unactive"
         static let recomendationBackground = "recomendationBackground"
         static let recomendationTitle = "recomendationTitle"
+        static let checkboxButton = "consent"
     }
     
 }

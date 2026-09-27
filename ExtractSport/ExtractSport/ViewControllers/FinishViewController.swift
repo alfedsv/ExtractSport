@@ -30,7 +30,7 @@ final class FinishViewController: BaseViewController {
         return label
     }()
 
-    private let toMainButton = LargeButton(title: "largeButton.toMain".localized)
+    private let toMainButton = LargeButton(title: "largeButton.toMain".localized, isActive: true)
     
     init() {
         self.viewModel = FinishViewModel()

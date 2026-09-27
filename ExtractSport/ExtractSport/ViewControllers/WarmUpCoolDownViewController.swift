@@ -15,7 +15,7 @@ final class WarmUpCoolDownViewController: BaseViewController {
     private let contentView = UIView()
     private let titleLabel = MainTitleLabel()
     private let stackView = UIStackView()
-    private let nextButton = LargeButton(title: "largeButton.next".localized)
+    private let nextButton = LargeButton(title: "largeButton.next".localized, isActive: true)
     
     init(controllerType: WarmUpCoolDownViewModel.ControllerType, workoutModel: WorkoutModel) {
         self.viewModel = WarmUpCoolDownViewModel(controllerType: controllerType, workoutModel: workoutModel)

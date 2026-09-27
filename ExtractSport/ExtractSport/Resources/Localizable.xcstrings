@@ -1,6 +1,61 @@
 {
   "sourceLanguage" : "ru",
   "strings" : {
+    "consent.checkbox" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Я прочитал(а) и согласен(на) с условиями Пользовательского соглашения и Политикой конфиденциальности"
+          }
+        }
+      }
+    },
+    "consent.legal.privacy.header" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ"
+          }
+        }
+      }
+    },
+    "consent.legal.terms.header" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ПОЛЬЗОВАТЕЛЬСКОЕ СОГЛАШЕНИЕ"
+          }
+        }
+      }
+    },
+    "consent.subtitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пожалуйста, ознакомьтесь с условиями использования приложения"
+          }
+        }
+      }
+    },
+    "consent.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Перед началом"
+          }
+        }
+      }
+    },
     "controlButton.finished" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -217,6 +272,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Начать тренировку"
+          }
+        }
+      }
+    },
+    "largeButton.consent" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Продолжить"
           }
         }
       }
@@ -547,6 +613,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Разминка"
+          }
+        }
+      }
+    },
+    "version" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Версия:"
           }
         }
       }
